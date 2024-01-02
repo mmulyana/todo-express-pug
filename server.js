@@ -10,6 +10,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 
+let data = todos
+
+app.get('/', (req, res) => {
+  res.status(200).render('index')
+})
+
 app.listen(8000, () => {
   console.log(`server is running http://localhost:8000`)
 })
