@@ -13,20 +13,17 @@ app.use(express.urlencoded({ extended: true }))
 let data = todos
 
 app.get('/', (req, res) => {
-  res.status(200).render('index')
-})
-app.get('/todo', (req, res) => {
-  res.status(200).render('todo', {
+  res.status(200).render('index', {
     todos: data,
   })
 })
-app.post('/todo', (req, res) => {
+app.post('/', (req, res) => {
   const newTodo = {
     name: req.body.name,
     isDone: false,
   }
   data.push(newTodo)
-  res.redirect('/todo')
+  res.redirect('/')
 })
 
 app.listen(8000, () => {
