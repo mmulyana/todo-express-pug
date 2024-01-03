@@ -1,0 +1,11 @@
+html
+    head
+        title Todo List
+    body
+        h1 Todo List
+        form(id="addTodoForm" method="POST")
+            input(type="text" id="newTodo" name="name" placeholder="Add new todo")
+            button(type="submit") Add Todo
+        ul
+            each todo in todos
+                li= todo.name

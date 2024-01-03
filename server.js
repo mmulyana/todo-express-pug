@@ -15,6 +15,19 @@ let data = todos
 app.get('/', (req, res) => {
   res.status(200).render('index')
 })
+app.get('/todo', (req, res) => {
+  res.status(200).render('todo', {
+    todos: data,
+  })
+})
+app.post('/todo', (req, res) => {
+  const newTodo = {
+    name: req.body.name,
+    isDone: false,
+  }
+  data.push(newTodo)
+  res.redirect('/todo')
+})
 
 app.listen(8000, () => {
   console.log(`server is running http://localhost:8000`)
