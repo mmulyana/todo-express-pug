@@ -1,12 +1,14 @@
 html
     head
-        title Welcome to Our Website
+        title Todo List
+        link(rel="stylesheet" href="style.css")
     body
-        header
-            h1 Welcome to Our Website
-        main
-            p Thank you for visiting our website. We're excited to have you here!
-            p Feel free to explore and learn more about what we have to offer.
-            a(href="/todo") get started
-        footer
-            p © 2024 OurWebsite.com. All rights reserved.
+    div(class="max-w-2xl mx-auto pt-5 px-4")
+        h1(class="text-lg mb-2 font-medium") Todo List
+        form(id="addTodoForm" method="POST" class="flex gap-4")
+            div(class="grid grid-cols-[1fr_200px] gap-4 w-full")
+                input(type="text" id="newTodo" name="name" placeholder="Add new todo" class="px-3.5 py-2 bg-gray-100 rounded active:bg-white focus-within:bg-white outline-none focus-within:shadow-lg focus-within:shadow-gray-300/50")
+                button(type="submit" class="rounded bg-teal-800 text-white") Add
+        ul(class="flex flex-col gap-2")
+            each todo in todos
+                li(class="px-2 py-1.5 rounded bg-white/60 hover:bg-white cursor-pointer")= todo.name
